@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3ef2e0e0746bd0a4691697d73cd28dcd
+guid: 540b596d96deb01448cc00139cb6718a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -289487427836778912
-    second: blockField1_0
+      213: 6578506089395405872
+    second: stoneFrame2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: blockField1_0
+      name: stoneFrame2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 16
+        width: 17
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 066e8d8d7b88bfbf0800000000000000
-      internalID: -289487427836778912
+      spriteID: 03448231f6c8b4b50800000000000000
+      internalID: 6578506089395405872
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      blockField1_0: -289487427836778912
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3ef2e0e0746bd0a4691697d73cd28dcd
+guid: cd54a24eee54f594eac2d37fbaa74daa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -289487427836778912
-    second: blockField1_0
+      213: 7561811556289660668
+    second: soilField2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: blockField1_0
+      name: soilField2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 066e8d8d7b88bfbf0800000000000000
-      internalID: -289487427836778912
+      spriteID: cf6c617db83f0f860800000000000000
+      internalID: 7561811556289660668
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      blockField1_0: -289487427836778912
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
