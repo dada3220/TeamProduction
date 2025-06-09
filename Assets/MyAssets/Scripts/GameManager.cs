@@ -1,41 +1,49 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public GameObject playerPrefab;
+    public GameObject[] stagePrefabs; // プレハブ登録
 
-    private void Awake()
+    private GameObject currentStage;
+    private GameObject currentPlayer;
+    private int stageIndex = 0;
+
+    private void Start()
     {
-        // シングルトン化
-        if (instance == null)
+        LoadStage(stageIndex);
+    }
+
+    public void LoadStage(int index)
+    {
+        if (currentStage != null) Destroy(currentStage);
+        if (currentPlayer != null) Destroy(currentPlayer);
+
+        // ステージプレハブを生成
+        currentStage = Instantiate(stagePrefabs[index]);
+
+        // StartPoint を探す
+        Transform startPoint = currentStage.transform.Find("StartPoint");
+        if(startPoint == null)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // シーンをまたいで保持
+            Debug.LogError("StartPointがステージプレハブに見つかりません");
+            return;
+        }
+
+        currentPlayer = Instantiate(playerPrefab, startPoint.position, Quaternion.identity);
+    }
+
+    public void LoadNextStage()
+    {
+        stageIndex++;
+        if(stageIndex < stagePrefabs.Length)
+        {
+            LoadStage(stageIndex);
         }
         else
         {
-            Destroy(gameObject); // 2つ目以降は削除
+            Debug.Log("全ステージクリア");
         }
-    }
-
-    // シーン読み込み
-    public void LoadScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
-
-    // 現在のシーンをリロード
-    public void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    // 次のシーンへ（Build Index順）
-    public void LoadNextScene()
-    {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentIndex + 1);
     }
 }
 
