@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    [Header("プレイヤーとスタート地点の参照")]
+    [Header("プレイヤーの参照")]
     public GameObject playerPrefab;
-    public Transform startPoint;
+
+
     void Start()
     {
+        Transform startPoint = GameObject.Find("StartPoint")?.transform;
+
 
         if (playerPrefab != null && startPoint != null)
         {
