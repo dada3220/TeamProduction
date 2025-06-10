@@ -1,0 +1,46 @@
+using UnityEngine;
+using UnityEngine.Events;
+
+public class LifeManager : MonoBehaviour
+{
+    [Header("設定")]
+    public int maxLife = 3;  // 最大ライフ
+
+    [Header("イベント")]
+    public UnityEvent onLifeChanged;  // ライフが変化したときに実行するイベント
+    public UnityEvent onDeath;        // ライフが0になったときに実行するイベント
+
+    // 現在のライフ
+    public int CurrentLife { get; private set; }
+
+    void Awake()
+    {
+        // ゲーム開始時にライフを最大に設定
+        CurrentLife = maxLife;
+
+        Debug.Log($"[LifeManager] Awake: CurrentLife = {CurrentLife}");
+    }
+
+    // ライフを減らす処理
+    public void TakeDamage(int amount)
+    {
+        CurrentLife -= amount;
+        CurrentLife = Mathf.Max(CurrentLife, 0); // ライフが0未満にならないように制限
+        onLifeChanged?.Invoke(); // ライフ変化イベントを呼び出す
+
+        Debug.Log($"ライフ: {CurrentLife}");
+
+        if (CurrentLife <= 0)
+        {
+            onDeath?.Invoke(); // 死亡イベントを呼び出す
+            Debug.Log("ゲームオーバー");
+        }
+    }
+
+    // ライフをリセット（最大ライフに戻す）
+    public void ResetLife()
+    {
+        CurrentLife = maxLife;
+        onLifeChanged?.Invoke();
+    }
+}
