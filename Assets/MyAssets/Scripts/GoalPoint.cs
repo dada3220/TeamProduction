@@ -10,12 +10,9 @@ public class GoalPoint : MonoBehaviour
         {
             Debug.Log("ゴール！");
 
-            // 例：次のシーンを読み込む（名前または番号）
-            // SceneManager.LoadScene("NextStage");
-            // または：
-            gameManager.LoadNextStage();
+           
+            GameManager.Instance.LoadNextStage();
 
-            // 今はゴール時にDebugログを出すだけ
         }
     }
 }
