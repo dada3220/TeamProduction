@@ -7,18 +7,22 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;        
 
-    public LifeManager lifeManager; // ライフマネージャー（インスペクターで設定）
+    private LifeManager lifeManager; // ライフマネージャー（インスペクターで設定）
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // ライフマネージャーが設定されているか確認
         if (lifeManager == null)
         {
-            Debug.LogError("LifeManagerが設定されていません");
+            lifeManager = FindFirstObjectByType<LifeManager>();// シーン内から探す
+            if (lifeManager == null)
+            {
+                Debug.LogError("LifeManagerが見つかりません");
+            }
         }
     }
+
 
     void Update()
     {
