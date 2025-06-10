@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7539954757572973074}
   - component: {fileID: 421179201121101858}
   m_Layer: 0
-  m_Name: brickField1
+  m_Name: GrassPinkS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4719053245500169528}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.60272, y: 7.0511217, z: 0}
+  m_LocalPosition: {x: -26.60272, y: 7.055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -205004209188396958, guid: f951e29c36b4d9a498b0286da799cb60, type: 3}
+  m_Sprite: {fileID: 6453022516464613132, guid: 8c6fc4c934bb0a144b877a96c35abf8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,7 +150,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.07}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -160,5 +160,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.35, y: 0.35}
+  m_Size: {x: 0.15, y: 0.15}
   m_EdgeRadius: 0
