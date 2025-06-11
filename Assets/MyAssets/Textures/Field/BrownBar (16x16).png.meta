@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BrownBar (16x16)_0: -1121751651789170666
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
