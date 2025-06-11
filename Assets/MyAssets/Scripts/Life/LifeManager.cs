@@ -13,12 +13,24 @@ public class LifeManager : MonoBehaviour
     // 現在のライフ
     public int CurrentLife { get; private set; }
 
+    void Start()
+    {
+        // onDeath に GameOver を登録
+        onDeath.AddListener(() =>
+        {
+            var player = FindFirstObjectByType<PlayerController>();
+            if (player != null && GameOverManager.Instance != null)
+            {
+                GameOverManager.Instance.GameOver(player.gameObject);
+            }
+        });
+    }
+
+
     void Awake()
     {
         // ゲーム開始時にライフを最大に設定
         CurrentLife = maxLife;
-
-        Debug.Log($"[LifeManager] Awake: CurrentLife = {CurrentLife}");
     }
 
     // ライフを減らす処理
@@ -34,6 +46,8 @@ public class LifeManager : MonoBehaviour
         {
             onDeath?.Invoke(); // 死亡イベントを呼び出す
             Debug.Log("ゲームオーバー");
+
+
         }
     }
 

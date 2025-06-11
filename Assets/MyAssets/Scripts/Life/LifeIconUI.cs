@@ -48,8 +48,6 @@ public class LifeIconUI : MonoBehaviour
 
     void UpdateHearts()
     {
-        Debug.Log($"[LifeIconUI] UpdateHearts called. CurrentLife = {lifeManager.CurrentLife}");
-
         for (int i = 0; i < heartImages.Count; i++)
         {
             heartImages[i].sprite = i < lifeManager.CurrentLife ? fullHeartSprite : emptyHeartSprite;

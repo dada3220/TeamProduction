@@ -1,13 +1,27 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;   // 左右の移動スピード
-    public float jumpForce;  // ジャンプの力
+    public float moveSpeed;
+    public float jumpForce;
 
-    private Rigidbody2D rb;        
+    private Rigidbody2D rb;
+    private LifeManager lifeManager;
 
-    private LifeManager lifeManager; // ライフマネージャー（インスペクターで設定）
+    private bool isGrounded;
+    private int jumpCount = 0;
+    private int maxJumpCount = 1;
+
+    public Transform groundCheck;
+    public float groundCheckRadius = 0.2f;
+    public LayerMask groundLayer;
+
+    private bool isInvincible = false;       // 無敵状態フラグ
+    public float invincibleTime;        // 無敵時間
+    public float knockbackForce;        // ノックバックの強さ
+
+    private bool canMove = true;
 
     void Start()
     {
@@ -15,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
         if (lifeManager == null)
         {
-            lifeManager = FindFirstObjectByType<LifeManager>();// シーン内から探す
+            lifeManager = FindFirstObjectByType<LifeManager>();
             if (lifeManager == null)
             {
                 Debug.LogError("LifeManagerが見つかりません");
@@ -23,37 +37,78 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     void Update()
     {
-        Move();         // 移動処理
-        Jump();         // ジャンプ処理
+        CheckGround();
+        Move();
+        Jump();
     }
 
-    // 左右移動の処理
+ 
     void Move()
     {
-        float moveX = Input.GetAxisRaw("Horizontal"); // 左: -1、右: 1
+        if (!canMove) return;
+        float moveX = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(moveX * moveSpeed, rb.linearVelocity.y);
     }
 
-    // ジャンプ処理
+    IEnumerator InvincibilityCoroutine()
+    {
+        isInvincible = true;
+        canMove = false;
+
+        //無敵中色変化
+        GetComponent<SpriteRenderer>().color = Color.red;
+
+        yield return new WaitForSeconds(1.0f); // 0.5秒だけ操作停止
+        canMove = true;
+
+        yield return new WaitForSeconds(invincibleTime - 1.0f); // 残り無敵時間
+
+        isInvincible = false;
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+
     void Jump()
     {
-        // ↑キーを押していて、かつ地面にいるときだけジャンプ
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < maxJumpCount)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            jumpCount++;
         }
     }
 
-    // 何かと衝突したときの処理
-    void OnCollisionEnter2D(Collision2D collision)
+    void CheckGround()
     {
-        // 障害物にぶつかったらライフを減らす
-        if (collision.gameObject.CompareTag("Obstacle"))
+        bool wasGrounded = isGrounded;
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        if (isGrounded && !wasGrounded)
         {
-            lifeManager.TakeDamage(1); // ライフマネージャーを通じてライフを減らす
+            // 着地直後なら速度を０にする(摩擦０で設定しているため滑り防止)
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+
+        }
+
+        if (isGrounded)
+        {
+            jumpCount = 0;
+        }
+    }
+
+void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle") && !isInvincible)
+        {
+            lifeManager.TakeDamage(1);
+            StartCoroutine(InvincibilityCoroutine());
+
+            // ノックバック処理（Obstacleの位置から押し返す）
+            Vector2 knockbackDir = 
+                (transform.position - collision.transform.position).normalized;
+            rb.linearVelocity = 
+                new Vector2(knockbackDir.x * knockbackForce, knockbackForce * 2.0f);
         }
     }
 }
