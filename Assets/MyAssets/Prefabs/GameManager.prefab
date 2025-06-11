@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce199edfd24c5a47be54ced7d0e628d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 7208587238790481168, guid: b4b22bec05f67ef44a20694884955b51, type: 3}
+  scoreText: {fileID: 0}
+  playerPrefab: {fileID: 1028968314180875510, guid: b4b22bec05f67ef44a20694884955b51, type: 3}
   stagePrefabs: []
