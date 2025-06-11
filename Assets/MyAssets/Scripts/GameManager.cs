@@ -1,30 +1,32 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public Text scoreText; // UI‚ÌText
+    public TMP_Text scoreText; // Scoreã®UI
 
     public GameObject playerPrefab;
-    public GameObject[] stagePrefabs; // ƒvƒŒƒnƒu“o˜^
+    public GameObject[] stagePrefabs; // ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ—ãƒ¬ãƒãƒ–ã®é…åˆ—
+    
 
     private GameObject currentStage;
     private GameObject currentPlayer;
+    
     private int stageIndex = 0;
     private int score = 0;
     private void Awake()
     {
-        // ƒVƒ“ƒOƒ‹ƒgƒ“‚Ì‰Šú‰»
+        // 2å›å‘¼ã³å‡ºã•ã‚Œãªã„
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // ƒV[ƒ“‚ğ‚Ü‚½‚¢‚Å‚àc‚·ê‡
+            DontDestroyOnLoad(gameObject); // 2å›å‘¼ã°ã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
         }
         else
         {
-            Destroy(gameObject); // 2‚Â–ÚˆÈ~‚Ííœ
+            Destroy(gameObject);
             return;
         }
     }
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount;
+        UpdateScoreUI();
     }
     private void UpdateScoreUI()
     {
@@ -53,17 +56,17 @@ public class GameManager : MonoBehaviour
         if (currentStage != null) Destroy(currentStage);
         if (currentPlayer != null) Destroy(currentPlayer);
 
-        // ƒXƒe[ƒWƒvƒŒƒnƒu‚ğ¶¬
+        // ç¾åœ¨ã®ã‚¹ãƒ†ãƒ¼ã‚¸é…åˆ—ã‹ã‚‰å‚ç…§
         currentStage = Instantiate(stagePrefabs[index]);
 
-        // StartPoint ‚ğ’T‚·
+        // StartPoint
         Transform startPoint = currentStage.transform.Find("StartPoint");
         if(startPoint == null)
         {
-            Debug.LogError("StartPoint‚ªƒXƒe[ƒWƒvƒŒƒnƒu‚ÉŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
+            Debug.LogError("StartPointãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸ");
             return;
         }
-
+        
         currentPlayer = Instantiate(playerPrefab, startPoint.position, Quaternion.identity);
     }
 
@@ -76,8 +79,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("‘SƒXƒe[ƒWƒNƒŠƒA");
+            Debug.Log("å…¨ã‚¹ãƒ†ãƒ¼ã‚¸ã‚¯ãƒªã‚¢");
         }
     }
+
+    
 }
 
