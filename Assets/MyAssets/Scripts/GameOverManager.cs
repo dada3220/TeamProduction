@@ -5,6 +5,7 @@ public class GameOverManager : MonoBehaviour
 {
     public static GameOverManager Instance;
 
+    
     private void Awake()
     {
         // シングルトン（1つだけ存在）
@@ -18,6 +19,7 @@ public class GameOverManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
 
     public void GameOver(GameObject player)
     {

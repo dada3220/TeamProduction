@@ -36,7 +36,10 @@ public class GameManager : MonoBehaviour
     {
         LoadStage(stageIndex);
         UpdateScoreUI();
+       
     }
+
+   
 
     public void AddScore(int amount)
     {
@@ -81,6 +84,14 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("全ステージクリア");
         }
+    }
+
+    public void RestartGame()
+    {
+        stageIndex = 0;
+        score = 0;
+        LoadStage(stageIndex);
+        UpdateScoreUI();
     }
 
     
