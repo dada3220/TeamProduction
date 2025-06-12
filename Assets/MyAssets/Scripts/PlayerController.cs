@@ -57,17 +57,22 @@ public class PlayerController : MonoBehaviour
         isInvincible = true;
         canMove = false;
 
-        //無敵中色変化
+        // 色変更で無敵演出
         GetComponent<SpriteRenderer>().color = Color.red;
 
-        yield return new WaitForSeconds(1.0f); // 0.5秒だけ操作停止
+        yield return new WaitForSeconds(0.2f); // ちょっとだけノックバックの移動
+
+        // ノックバックを止める（または緩やかに減衰させる）
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+
+        yield return new WaitForSeconds(0.8f); // 操作不能の残り時間
         canMove = true;
 
-        yield return new WaitForSeconds(invincibleTime - 1.0f); // 残り無敵時間
-
+        yield return new WaitForSeconds(invincibleTime - 1.0f); // 無敵継続
         isInvincible = false;
         GetComponent<SpriteRenderer>().color = Color.white;
     }
+
 
 
     void Jump()
