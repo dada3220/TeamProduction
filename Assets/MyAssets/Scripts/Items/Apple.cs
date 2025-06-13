@@ -11,6 +11,7 @@ public class Apple : MonoBehaviour
         {
             // スコアを加算
             GameManager.Instance.AddScore(scoreValue);
+            
 
             Debug.Log("score : 10");
             // アイテムを消す

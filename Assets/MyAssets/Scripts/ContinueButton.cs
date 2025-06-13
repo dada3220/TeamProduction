@@ -3,11 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class ContinueButton : MonoBehaviour
 {
+    public GameObject gameOverUI;
+   
+
     public void OnContinueButtonClicked()
     {
-
-        SceneManager.LoadScene("GameScene",LoadSceneMode.Single);
-        GameManager.Instance.RestartGame();
+        
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
         
     }
 }
