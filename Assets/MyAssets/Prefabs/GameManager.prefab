@@ -45,9 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
-  playerPrefab: {fileID: 2895078837807579536, guid: b4b22bec05f67ef44a20694884955b51, type: 3}
+  playerPrefab: {fileID: 4837407377195095321, guid: 79fe9063d478ae7418d44df23f314f55, type: 3}
   stagePrefabs:
-  - {fileID: 5847199796454228966, guid: 3dbb30915c125e642bfd0541d9bc9a50, type: 3}
-  - {fileID: 4866881403194628921, guid: 1d4daad1904713444a3b9a57caa6070d, type: 3}
-  - {fileID: 71036547342076054, guid: 2920f1bc380c5a744aebde95786f90c3, type: 3}
   - {fileID: 9167994487206785163, guid: 84077c174d851ec48b6a61233f36f096, type: 3}
