@@ -28,6 +28,8 @@ public class GameOverManager : MonoBehaviour
             Destroy(player);
         }
 
+        BGMManager.Instance.StopBGM(); //BGM停止
+        SEManager.Instance.PlaySE(1); //ゲームオーバーSE再生
         SceneManager.LoadScene("GameOverScene");
     }
 

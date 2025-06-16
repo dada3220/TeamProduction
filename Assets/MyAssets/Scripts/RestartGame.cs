@@ -8,6 +8,7 @@ public class RestartGame : MonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.RestartGame();
+            BGMManager.Instance?.PlayBGM(1);// BGMÄ¶
         }
     }
 

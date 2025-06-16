@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         if(GameManager.Instance != null)
         {
-            BGMManager.Instance?.PlayBGM(0);// BGM再生
+            BGMManager.Instance?.PlayBGM(1);// BGM再生
             RestartGame();
         }
        

@@ -37,6 +37,7 @@ public class LifeManager : MonoBehaviour
     public void TakeDamage(int amount)
     {
         CurrentLife -= amount;
+        SEManager.Instance.PlaySE(0);
         CurrentLife = Mathf.Max(CurrentLife, 0); // ライフが0未満にならないように制限
         onLifeChanged?.Invoke(); // ライフ変化イベントを呼び出す
 
