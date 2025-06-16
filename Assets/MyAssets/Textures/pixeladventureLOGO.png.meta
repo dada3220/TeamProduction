@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pixeladventureLOGO_0: 1594088028415582177
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
