@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
 
+    private Animator animator;
     private Rigidbody2D rb;
     private LifeManager lifeManager;
 
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
         if (lifeManager == null)
@@ -81,6 +83,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             jumpCount++;
+
+            animator.SetTrigger("Jump");
         }
     }
 
@@ -94,6 +98,7 @@ public class PlayerController : MonoBehaviour
             // ’…’n’¼Œã‚È‚ç‘¬“x‚ğ‚O‚É‚·‚é(–€C‚O‚Åİ’è‚µ‚Ä‚¢‚é‚½‚ßŠŠ‚è–h~)
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
 
+            animator.SetTrigger("Walk");
         }
 
         if (isGrounded)
