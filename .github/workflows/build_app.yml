@@ -18,7 +18,7 @@ jobs:
         buildMethod:
           - BuildApp.Build
         unityPath:
-          - '"C:\Program Files\Unity\Hub\Editor\2020.3.33f1\Editor\Unity.exe"' #使用しているUnityのバージョンのパス
+          - '"C:\Program Files\Unity\Hub\Editor\6000.0.48f1\Editor\Unity.exe"' #使用しているUnityのバージョンのパス
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,7 +31,7 @@ jobs:
           ${{ matrix.unityPath }} -batchmode -quit -projectPath . -buildTarget ${{matrix.targetPlatform}} -executeMethod ${{ matrix.buildMethod }} -logFile -
 
       - name: Upload App
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: App_Develop
           path: Builds/App/
