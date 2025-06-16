@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 
@@ -20,6 +21,13 @@ public class GameManager : MonoBehaviour
 
     private int stageIndex = 0;
     private int score = 0;
+
+    public int Score
+    {
+        get { return score; }
+        private set { score = value; }
+    }
+
     private void Awake()
     {
         // 2回呼び出されない
@@ -112,6 +120,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            SceneManager.LoadScene("Clear", LoadSceneMode.Single);
             Debug.Log("全ステージクリア");
         }
     }
