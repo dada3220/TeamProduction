@@ -1048,7 +1048,7 @@ MonoBehaviour:
   audioSource: {fileID: 1602840134}
   bgmClips:
   - {fileID: 8300000, guid: b1e04aab807f2d84886cb18df33a5c4f, type: 3}
-  fadeDuration: 1.5
+  fadeDuration: 0
 --- !u!4 &1602840136
 Transform:
   m_ObjectHideFlags: 0
