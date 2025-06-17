@@ -13,11 +13,8 @@ GameObject:
   - component: {fileID: 7694125305477417321}
   - component: {fileID: 7838211960572356149}
   - component: {fileID: 3604659384186981812}
-<<<<<<< Updated upstream
   - component: {fileID: 1929346570963686661}
-=======
-  - component: {fileID: 2175353181064798413}
->>>>>>> Stashed changes
+  - component: {fileID: -3434959708511108395}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -190,21 +187,14 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.26, y: 0.31}
   m_EdgeRadius: 0
-<<<<<<< Updated upstream
 --- !u!114 &1929346570963686661
 MonoBehaviour:
-=======
---- !u!95 &2175353181064798413
-Animator:
-  serializedVersion: 7
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2895078837807579536}
   m_Enabled: 1
-<<<<<<< Updated upstream
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 326299b0275551a4ba1fcefcf8ca230f, type: 3}
   m_Name: 
@@ -214,7 +204,15 @@ Animator:
     serializedVersion: 2
     m_Bits: 136
   requiredCrushTime: 0.05
-=======
+--- !u!95 &-3434959708511108395
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2895078837807579536}
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f71cf22739cabf14d9eed07772436844, type: 2}
   m_CullingMode: 0
@@ -228,7 +226,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
->>>>>>> Stashed changes
 --- !u!1 &5315070857077356619
 GameObject:
   m_ObjectHideFlags: 0
