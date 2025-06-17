@@ -3,9 +3,9 @@ using UnityEngine.Audio;
 using System.Collections;
 using System.Collections.Generic;
 
-public class BGMManager : MonoBehaviour
+public class BGMManager : SingletonMonoBehaviour<BGMManager>
 {
-    public static BGMManager Instance { get; private set; }
+    
 
     [Header("BGMİ’è")]
     public AudioSource audioSource;
@@ -16,18 +16,7 @@ public class BGMManager : MonoBehaviour
 
     private Coroutine currentFade;
 
-    void Awake()
-    {
-        // ƒVƒ“ƒOƒ‹ƒgƒ“‰»
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
+    
 
     public void PlayBGM(int index)
     {

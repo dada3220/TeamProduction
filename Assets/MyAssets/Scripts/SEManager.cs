@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class SEManager : MonoBehaviour
+public class SEManager : SingletonMonoBehaviour<SEManager>
 {
-    public static SEManager Instance { get; private set; }
+    
 
     [Header("SE設定")]
     public AudioSource audioSource;
@@ -11,18 +11,10 @@ public class SEManager : MonoBehaviour
 
     private Dictionary<string, AudioClip> seDict;
 
-    void Awake()
+    protected override void  Awake()
     {
-        // シングルトン化
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-
+        
+        CheckInstance();
         // 名前で再生したい場合の辞書化
         seDict = new Dictionary<string, AudioClip>();
         foreach (var clip in seClips)

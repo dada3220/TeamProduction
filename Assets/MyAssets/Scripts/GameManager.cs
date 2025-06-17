@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    public static GameManager Instance;
+    //public static GameManager Instance;
 
     public TMP_Text scoreText; // ScoreのUI
 
@@ -28,20 +28,7 @@ public class GameManager : MonoBehaviour
         private set { score = value; }
     }
 
-    private void Awake()
-    {
-        // 2回呼び出されない
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // 2回呼ばれないようにする
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
+    
 
 
     private void Start()
@@ -120,6 +107,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            BGMManager.Instance.StopBGM();
             SceneManager.LoadScene("Clear", LoadSceneMode.Single);
             Debug.Log("全ステージクリア");
         }

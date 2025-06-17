@@ -7,7 +7,7 @@ public class TitleController : MonoBehaviour
     void Start()
     {
             BGMManager.Instance?.PlayBGM(0);// BGMçƒê∂
-        }
+    }
 
     public void OnStartButtonClicked()
     {
@@ -16,6 +16,7 @@ public class TitleController : MonoBehaviour
 
     public void OnTitleButtonClicked()
     {
+        BGMManager.Instance.StopBGM();
         SceneManager.LoadScene("Title", LoadSceneMode.Single);
     }
 
