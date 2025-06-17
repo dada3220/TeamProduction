@@ -338,18 +338,30 @@ PrefabInstance:
       objectReference: {fileID: 2895078837807579536, guid: b4b22bec05f67ef44a20694884955b51, type: 3}
     - target: {fileID: 7911980311049862801, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
       propertyPath: stagePrefabs.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7911980311049862801, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
       propertyPath: 'stagePrefabs.Array.data[0]'
       value: 
-      objectReference: {fileID: 9167994487206785163, guid: 84077c174d851ec48b6a61233f36f096, type: 3}
+      objectReference: {fileID: 5847199796454228966, guid: 3dbb30915c125e642bfd0541d9bc9a50, type: 3}
     - target: {fileID: 7911980311049862801, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
       propertyPath: 'stagePrefabs.Array.data[1]'
       value: 
-      objectReference: {fileID: 2583842172932940337, guid: 04eaec05677d2494bb1ae33d806049a1, type: 3}
+      objectReference: {fileID: 4866881403194628921, guid: 1d4daad1904713444a3b9a57caa6070d, type: 3}
     - target: {fileID: 7911980311049862801, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
       propertyPath: 'stagePrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 71036547342076054, guid: 2920f1bc380c5a744aebde95786f90c3, type: 3}
+    - target: {fileID: 7911980311049862801, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
+      propertyPath: 'stagePrefabs.Array.data[3]'
+      value: 
+      objectReference: {fileID: 9167994487206785163, guid: 84077c174d851ec48b6a61233f36f096, type: 3}
+    - target: {fileID: 7911980311049862801, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
+      propertyPath: 'stagePrefabs.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2583842172932940337, guid: 04eaec05677d2494bb1ae33d806049a1, type: 3}
+    - target: {fileID: 7911980311049862801, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
+      propertyPath: 'stagePrefabs.Array.data[5]'
       value: 
       objectReference: {fileID: 1625904153960627449, guid: bbcc778deda256f4e90f06f862d2e898, type: 3}
     - target: {fileID: 8246210142899126179, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
