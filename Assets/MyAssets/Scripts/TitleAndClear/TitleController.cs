@@ -16,7 +16,6 @@ public class TitleController : MonoBehaviour
 
     public void OnTitleButtonClicked()
     {
-        BGMManager.Instance.StopBGM();
         SceneManager.LoadScene("Title", LoadSceneMode.Single);
     }
 
