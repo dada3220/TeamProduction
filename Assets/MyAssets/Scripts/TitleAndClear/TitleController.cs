@@ -1,8 +1,14 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TitleController : MonoBehaviour
 {
+    void Start()
+    {
+            BGMManager.Instance?.PlayBGM(0);// BGMçƒê∂
+        }
+
     public void OnStartButtonClicked()
     {
         SceneManager.LoadScene("GameScene", LoadSceneMode.Single);

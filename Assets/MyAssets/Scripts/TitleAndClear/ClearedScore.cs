@@ -14,6 +14,7 @@ public class ClearedScore : MonoBehaviour
         
         if (scoreText == null)
         {
+            BGMManager.Instance?.PlayBGM(2);// BGMçƒê∂
             GameObject obj = GameObject.Find("Score");
 
             if (obj != null)
