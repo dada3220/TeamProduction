@@ -1,24 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverManager : MonoBehaviour
+public class GameOverManager : SingletonMonoBehaviour<GameOverManager>
 {
-    public static GameOverManager Instance;
-
-    
-    private void Awake()
-    {
-        // シングルトン（1つだけ存在）
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // シーンをまたいでも維持
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
     
 
     public void GameOver(GameObject player)
