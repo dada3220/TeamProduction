@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7838211960572356149}
   - component: {fileID: 3604659384186981812}
   - component: {fileID: 1929346570963686661}
-  - component: {fileID: -3434959708511108395}
+  - component: {fileID: 2963719940365669977}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -204,7 +204,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   requiredCrushTime: 0.05
---- !u!95 &-3434959708511108395
+--- !u!95 &2963719940365669977
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ Animator:
   m_GameObject: {fileID: 2895078837807579536}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f71cf22739cabf14d9eed07772436844, type: 2}
+  m_Controller: {fileID: 9100000, guid: 56c29f6e3e04c1f4180471d3689cbbf7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

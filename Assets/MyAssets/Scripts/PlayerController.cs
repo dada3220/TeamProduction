@@ -18,9 +18,9 @@ public class PlayerController : MonoBehaviour
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
 
-    private bool isInvincible = false;       // 無敵状態フラグ
-    public float invincibleTime;        // 無敵時間
-    public float knockbackForce;        // ノックバックの強さ
+    private bool isInvincible = false;
+    public float invincibleTime;
+    public float knockbackForce;
 
     private bool canMove = true;
 
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
             lifeManager = FindFirstObjectByType<LifeManager>();
             if (lifeManager == null)
             {
-                Debug.LogError("LifeManagerが見つかりません");
+                Debug.LogError("LifeManager縺瑚ｦ九▽縺九ｊ縺ｾ縺帙ｓ");
             }
         }
     }
@@ -44,38 +44,25 @@ public class PlayerController : MonoBehaviour
         CheckGround();
         Move();
         Jump();
+
+        float moveX = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(moveX));
+        animator.SetBool("IsGrounded", isGrounded);
     }
 
- 
     void Move()
     {
         if (!canMove) return;
+
         float moveX = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(moveX * moveSpeed, rb.linearVelocity.y);
+
+        // 蟾ｦ蜿ｳ蜿崎ｻ｢
+        if (moveX != 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = moveX < 0;
+        }
     }
-
-    IEnumerator InvincibilityCoroutine()
-    {
-        isInvincible = true;
-        canMove = false;
-
-        // 色変更で無敵演出
-        GetComponent<SpriteRenderer>().color = Color.red;
-
-        yield return new WaitForSeconds(0.2f); // ちょっとだけノックバックの移動
-
-        // ノックバックを止める（または緩やかに減衰させる）
-        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
-
-        yield return new WaitForSeconds(0.8f); // 操作不能の残り時間
-        canMove = true;
-
-        yield return new WaitForSeconds(invincibleTime - 1.0f); // 無敵継続
-        isInvincible = false;
-        GetComponent<SpriteRenderer>().color = Color.white;
-    }
-
-
 
     void Jump()
     {
@@ -83,7 +70,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             jumpCount++;
-
             animator.SetTrigger("Jump");
         }
     }
@@ -95,10 +81,8 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded && !wasGrounded)
         {
-            // 着地直後なら速度を０にする(摩擦０で設定しているため滑り防止)
+            // 逹蝨ｰ逶ｴ蠕後↓騾溷ｺｦ繝ｪ繧ｻ繝�繝�
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
-
-            animator.SetTrigger("Walk");
         }
 
         if (isGrounded)
@@ -107,18 +91,35 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacle") && !isInvincible)
         {
             lifeManager.TakeDamage(1);
             StartCoroutine(InvincibilityCoroutine());
 
-            // ノックバック処理（Obstacleの位置から押し返す）
-            Vector2 knockbackDir = 
-                (transform.position - collision.transform.position).normalized;
-            rb.linearVelocity = 
-                new Vector2(knockbackDir.x * knockbackForce, knockbackForce * 2.0f);
+            // 繝弱ャ繧ｯ繝舌ャ繧ｯ
+            Vector2 knockbackDir = (transform.position - collision.transform.position).normalized;
+            rb.linearVelocity = new Vector2(knockbackDir.x * knockbackForce, knockbackForce * 2.0f);
         }
+    }
+
+    IEnumerator InvincibilityCoroutine()
+    {
+        isInvincible = true;
+        canMove = false;
+
+        GetComponent<SpriteRenderer>().color = Color.red;
+
+        yield return new WaitForSeconds(0.2f);
+
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+
+        yield return new WaitForSeconds(0.8f);
+        canMove = true;
+
+        yield return new WaitForSeconds(invincibleTime - 1.0f);
+        isInvincible = false;
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 }
