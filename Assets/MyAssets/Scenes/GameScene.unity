@@ -557,7 +557,7 @@ PrefabInstance:
       objectReference: {fileID: 2895078837807579536, guid: b4b22bec05f67ef44a20694884955b51, type: 3}
     - target: {fileID: 7911980311049862801, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
       propertyPath: stagePrefabs.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7911980311049862801, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
       propertyPath: 'stagePrefabs.Array.data[0]'
@@ -566,7 +566,7 @@ PrefabInstance:
     - target: {fileID: 7911980311049862801, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
       propertyPath: 'stagePrefabs.Array.data[1]'
       value: 
-      objectReference: {fileID: 353684094965908881, guid: 3446a8011bb8ce244ac41d737ca4170f, type: 3}
+      objectReference: {fileID: 71036547342076054, guid: 2920f1bc380c5a744aebde95786f90c3, type: 3}
     - target: {fileID: 8246210142899126179, guid: d2026c5f37d820f4fb548de873bc2e6a, type: 3}
       propertyPath: m_Name
       value: GameManager

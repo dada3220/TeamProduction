@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Audio;
 
 public class SEManager : SingletonMonoBehaviour<SEManager>
 {
@@ -8,6 +9,7 @@ public class SEManager : SingletonMonoBehaviour<SEManager>
     [Header("SEê›íË")]
     public AudioSource audioSource;
     public List<AudioClip> seClips;
+    public AudioMixer audioMixer;
 
     private Dictionary<string, AudioClip> seDict;
 

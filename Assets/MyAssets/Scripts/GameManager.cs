@@ -22,6 +22,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private int stageIndex = 0;
     private int score = 0;
 
+    private int lifeRecoverThreshold = 100; // 回復ごとのスコアしきい値
+    private int nextRecoverScore = 100;
+
     public int Score
     {
         get { return score; }
@@ -35,6 +38,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         if(GameManager.Instance != null)
         {
+            BGMManager.Instance.StopBGM(); //BGM停止
             BGMManager.Instance?.PlayBGM(1);// BGM再生
             RestartGame();
         }
@@ -44,15 +48,27 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
        
     }
 
-   
-
 
 
     public void AddScore(int amount)
+{
+    score += amount;
+    UpdateScoreUI();
+
+    if (score >= nextRecoverScore)
     {
-        score += amount;
-        UpdateScoreUI();
+        // ライフ回復処理
+        var lifeManager = FindFirstObjectByType<LifeManager>();
+        if (lifeManager != null)
+        {
+            lifeManager.Heal(1);
+        }
+
+        // 次の回復しきい値を更新（100点ごと）
+        nextRecoverScore += lifeRecoverThreshold;
     }
+}
+
     private void UpdateScoreUI()
     {
         if(scoreText == null)

@@ -58,4 +58,16 @@ public class LifeManager : MonoBehaviour
         CurrentLife = maxLife;
         onLifeChanged?.Invoke();
     }
+
+    // ƒ‰ƒCƒt‰ñ•œ
+    public void Heal(int amount)
+    {
+        int previousLife = CurrentLife;
+        CurrentLife = Mathf.Min(CurrentLife + amount, maxLife); // ãŒÀ‚ğ’´‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+        if (CurrentLife != previousLife)
+        {
+            onLifeChanged?.Invoke();
+        }
+    }
+
 }
